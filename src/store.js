@@ -11,20 +11,7 @@ export const useBudgetStore = defineStore("budget", {
       { id: 5, name: "Other" },
     ],
     defaultSpendType: 1,
-    spendings: {
-      "2023-07-25": [
-        { uid: "qvddv", type: 1, text: "Item 1", amount: 520, created: "09:00" },
-        { uid: "1d2ae", type: 2, text: "Item 2", amount: 1200, created: "10:30" },
-        { uid: "fdqvd", type: 3, text: "Item 3", amount: 11, created: "12:15" },
-        { uid: "1243d", type: 4, text: "Item 4", amount: 30, created: "14:45" },
-        { uid: "1adrs", type: 5, text: "Item 5", amount: 63, created: "16:20" },
-        { uid: "qwddf", type: 3, text: "Item 6", amount: 75, created: "17:50" },
-        { uid: "3ad4r", type: 2, text: "Item 7", amount: 42, created: "19:30" },
-        { uid: "gwder", type: 1, text: "Item 8", amount: 19, created: "21:10" },
-        { uid: "3gad4", type: 2, text: "Item 9", amount: 88, created: "22:40" },
-        { uid: "w5ayu", type: 4, text: "Item 10", amount: 10, created: "23:59" },
-      ],
-    },
+    spendings: {},
   }),
   getters: {
     todaySpending(state) {

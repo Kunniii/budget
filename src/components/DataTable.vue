@@ -4,6 +4,7 @@ import { useBudgetStore } from "../store";
 const store = useBudgetStore();
 
 const dates = Object.keys(store.spendings);
+const today = store.today;
 
 function getTypeText(id) {
   let item = store.spendTypes.find((item) => item.id == id);
@@ -14,7 +15,14 @@ function getTypeText(id) {
   }
 }
 
-function totalSpendByDate() {}
+function totalSpendByDate(date) {
+  const spendings = store.spendings[date];
+  let total = 0;
+  spendings.forEach((item) => {
+    total += item.amount;
+  });
+  return new Intl.NumberFormat("en-US").format(total * 1000);
+}
 </script>
 
 <template>
@@ -43,5 +51,9 @@ function totalSpendByDate() {}
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="bg-violet-700 text-white flex justify-around font-bold text-center m-1 rounded-xl">
+    <p>Total</p>
+    <p>{{ totalSpendByDate(today.date) }}</p>
   </div>
 </template>

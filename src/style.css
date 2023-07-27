@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+  .small-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .small-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-400;
+    @apply rounded-full;
+  }
+}

@@ -161,6 +161,14 @@ export const useBudgetStore = defineStore("budget", {
       });
       return { date, time };
     },
+    totalSpendingBySelectedDate(state) {
+      const spendings = state.getSpendingByDate(state.selectedDate);
+      let total = 0;
+      spendings.forEach((item) => {
+        total += item.amount;
+      });
+      return new Intl.NumberFormat("en-US").format(total * 1000);
+    },
   },
   actions: {
     loadLocalStorage() {

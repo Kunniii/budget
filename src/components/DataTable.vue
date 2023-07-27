@@ -13,15 +13,6 @@ function getTypeText(id) {
   }
 }
 
-function totalSpendByDate(date) {
-  const spendings = store.getSpendingByDate(date);
-  let total = 0;
-  spendings.forEach((item) => {
-    total += item.amount;
-  });
-  return new Intl.NumberFormat("en-US").format(total * 1000);
-}
-
 function truncateString(str, maxLength) {
   if (str.length <= maxLength) {
     return str;
@@ -66,6 +57,6 @@ function truncateString(str, maxLength) {
   </div>
   <div class="bg-violet-700 text-white flex justify-around font-bold text-center m-1 rounded-xl">
     <p>Total</p>
-    <p>{{ totalSpendByDate(today.date) }}</p>
+    <p>{{ store.totalSpendingBySelectedDate }}</p>
   </div>
 </template>

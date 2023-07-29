@@ -23,7 +23,9 @@ function truncateString(str, maxLength) {
 </script>
 
 <template>
-  <div class="m-1 h-[70vh] overflow-y-scroll rounded-xl border-2 border-violet-700 scrollbar">
+  <div
+    class="m-1 h-[65vh] overflow-y-scroll rounded-xl border-2 border-violet-700 scrollbar bg-white"
+  >
     <table class="border-collapse w-full text-center select-none">
       <colgroup>
         <col class="w-2" />

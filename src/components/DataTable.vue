@@ -24,7 +24,7 @@ function truncateString(str, maxLength) {
 
 <template>
   <div
-    class="m-1 h-[65vh] overflow-y-scroll rounded-xl border-2 border-violet-700 scrollbar bg-white"
+    class="m-1 h-[65vh] overflow-y-scroll rounded-xl border-2 border-cyan-500 scrollbar bg-white"
   >
     <table class="border-collapse w-full text-center select-none">
       <colgroup>
@@ -33,7 +33,7 @@ function truncateString(str, maxLength) {
         <col class="w-2" />
         <col class="w-2" />
       </colgroup>
-      <thead class="text-lg bg-violet-700 text-white sticky">
+      <thead class="text-lg bg-cyan-500 text-white sticky">
         <tr>
           <th>Time</th>
           <th>Type</th>
@@ -57,7 +57,7 @@ function truncateString(str, maxLength) {
       </tbody>
     </table>
   </div>
-  <div class="bg-violet-700 text-white flex justify-around font-bold text-center m-1 rounded-xl">
+  <div class="bg-cyan-500 text-white flex justify-around font-bold text-center m-1 rounded-xl">
     <p>Total</p>
     <p>{{ store.totalSpendingBySelectedDate }}</p>
   </div>

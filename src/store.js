@@ -12,7 +12,104 @@ export const useBudgetStore = defineStore("budget", {
     ],
     defaultSpendType: 1,
     selectedDate: new Date().toLocaleDateString("en-CA"),
-    spendings: {},
+    spendings: {
+      "2023-08-10": [
+        {
+          uid: "f193edba-4d70-4bb7-b055-b241ed2297d6",
+          created: "11:44:01",
+          type: 2,
+          text: "",
+          amount: 346,
+        },
+        {
+          uid: "194e2fe2-2be6-497a-b306-0cf904a44d17",
+          created: "11:44:01",
+          type: 2,
+          text: "Kunix mua gà",
+          amount: 50,
+        },
+      ],
+      "2023-08-11": [
+        {
+          uid: "f193edba-4d70-4bb7-b055-b241ed2297d6",
+          created: "11:44:01",
+          type: 2,
+          text: "",
+          amount: 34,
+        },
+        {
+          uid: "194e2fe2-2be6-497a-b306-0cf904a44d17",
+          created: "11:44:01",
+          type: 2,
+          text: "Kunix mua gà",
+          amount: 50,
+        },
+      ],
+      "2023-08-12": [
+        {
+          uid: "f193edba-4d70-4bb7-b055-b241ed2297d6",
+          created: "11:44:01",
+          type: 2,
+          text: "",
+          amount: 2,
+        },
+        {
+          uid: "194e2fe2-2be6-497a-b306-0cf904a44d17",
+          created: "11:44:01",
+          type: 2,
+          text: "Kunix mua gà",
+          amount: 50,
+        },
+      ],
+      "2023-08-13": [
+        {
+          uid: "f193edba-4d70-4bb7-b055-b241ed2297d6",
+          created: "11:44:01",
+          type: 2,
+          text: "",
+          amount: 1223450,
+        },
+        {
+          uid: "194e2fe2-2be6-497a-b306-0cf904a44d17",
+          created: "11:44:01",
+          type: 2,
+          text: "Kunix mua gà",
+          amount: 50,
+        },
+      ],
+      "2023-08-14": [
+        {
+          uid: "f193edba-4d70-4bb7-b055-b241ed2297d6",
+          created: "11:44:01",
+          type: 2,
+          text: "",
+          amount: 234,
+        },
+        {
+          uid: "194e2fe2-2be6-497a-b306-0cf904a44d17",
+          created: "11:44:01",
+          type: 2,
+          text: "Kunix mua gà",
+          amount: 50,
+        },
+      ],
+      "2023-08-15": [
+        {
+          uid: "f193edba-4d70-4bb7-b055-b241ed2297d6",
+          created: "11:44:01",
+          type: 2,
+          text: "",
+          amount: 2345,
+        },
+        {
+          uid: "194e2fe2-2be6-497a-b306-0cf904a44d17",
+          created: "11:44:01",
+          type: 2,
+          text: "Kunix mua gà",
+          amount: 50,
+        },
+      ],
+    },
   }),
   getters: {
     todaySpending(state) {

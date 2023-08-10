@@ -41,7 +41,7 @@ function addSpending() {
           />
           <label
             :for="option.id"
-            class="font-bold block cursor-pointer select-none rounded-xl py-1 px-3 text-center peer-checked:bg-violet-700 peer-checked:text-white"
+            class="font-bold block cursor-pointer select-none rounded-xl py-1 px-3 text-center peer-checked:bg-cyan-500 peer-checked:text-white"
             >{{ option.name }}</label
           >
         </div>
@@ -51,7 +51,7 @@ function addSpending() {
           name="number"
           type="number"
           placeholder="x1000 VNĐ"
-          class="rounded-xl w-full outline-dashed outline-2 outline-violet-300 focus:outline-violet-700 focus:outline py-1 px-2 duration-300 my-1"
+          class="rounded-xl w-full outline-dashed outline-2 outline-violet-300 focus:outline-cyan-500 focus:outline py-1 px-2 duration-300 my-1"
           @keydown="
             (e) => {
               if (e.key == 'Enter') addSpending();
@@ -63,7 +63,7 @@ function addSpending() {
           name="note"
           type="text"
           placeholder="Note..."
-          class="rounded-xl w-full outline-dashed outline-2 outline-violet-300 focus:outline-violet-700 focus:outline py-1 px-2 duration-300 my-1"
+          class="rounded-xl w-full outline-dashed outline-2 outline-violet-300 focus:outline-cyan-500 focus:outline py-1 px-2 duration-300 my-1"
           @keydown="
             (e) => {
               if (e.key == 'Enter') addSpending();
@@ -74,7 +74,7 @@ function addSpending() {
       </div>
       <button
         @click="addSpending"
-        class="px-4 py-1 my-1 w-full text-violet-700 border-2 border-violet-700 rounded-xl duration-300 hover:bg-violet-700 hover:text-white"
+        class="px-4 py-1 my-1 w-full text-cyan-500 border-2 border-cyan-500 rounded-xl duration-300 hover:bg-cyan-500 hover:text-white"
       >
         <i class="fa-solid fa-paper-plane"></i>
       </button>

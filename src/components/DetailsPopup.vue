@@ -12,10 +12,10 @@ const store = useBudgetStore();
     v-if="store.editingItem != undefined"
     class="bg-black bg-opacity-50 fixed z-20 w-screen h-screen top-0 duration-200 ease-in-out select-none"
   >
-    <div class="z-30 w-96 mx-auto bg-white shadow-lg rounded-lg overflow-hidden relative top-24">
+    <div class="z-30 w-96 mx-auto bg-white shadow-lg rounded-xl overflow-hidden relative top-24">
       <!-- Close Button -->
       <button
-        class="absolute top-2 right-2 px-3 py-1 bg-gray-200 text-gray-600 rounded-full hover:bg-gray-300"
+        class="absolute top-2 right-2 px-3 py-1 bg-gray-200 text-gray-600 rounded-xl hover:bg-gray-300"
         @click="store.editingItem = undefined"
       >
         <i class="fa-solid fa-xmark"></i>
@@ -34,8 +34,8 @@ const store = useBudgetStore();
               type="radio"
               :id="option.id"
               :value="option.id"
-              :checked="option.id == store.defaultSpendType"
-              v-model="selectedType"
+              :checked="option.id == store.editingItem.type"
+              v-model="store.editingItem.type"
               class="peer hidden"
             />
             <label
@@ -66,15 +66,8 @@ const store = useBudgetStore();
       </div>
       <div class="flex justify-around p-4">
         <button
-          class="w-32 px-4 py-2 bg-blue-400 font-bold text-white rounded-full hover:bg-blue-500"
-          @click="store.updateSpending"
-        >
-          <i class="fa-solid fa-floppy-disk"></i>
-          | Save
-        </button>
-        <button
-          class="w-32 px-4 py-2 bg-red-400 font-bold text-white rounded-full hover:bg-red-500"
-          @click="store.deleteSpending"
+          class="w-32 px-4 py-2 bg-red-400 font-bold text-white rounded-xl hover:bg-red-500"
+          @click="store.deleteSpending()"
         >
           <i class="fa-solid fa-trash"></i>
           | Delete

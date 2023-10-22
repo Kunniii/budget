@@ -13,21 +13,12 @@ export const useBudgetStore = defineStore("budget", {
     defaultSpendType: 1,
     selectedDate: new Date().toLocaleDateString("en-CA"),
     spendings: {},
+    editingItem: undefined,
   }),
   getters: {
     todaySpending(state) {
-      let today = this.today;
+      let today = state.getCurrentDateTime();
       return state.spendings[today.date];
-    },
-    today(state) {
-      const date = new Date().toLocaleDateString("en-CA");
-      const time = new Date().toLocaleTimeString("en-CA", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      });
-      return { date, time };
     },
     totalSpendingBySelectedDate(state) {
       const spendings = state.getSpendingByDate(state.selectedDate);
@@ -44,30 +35,57 @@ export const useBudgetStore = defineStore("budget", {
       if (rawData) {
         this.spendings = JSON.parse(rawData);
       }
-      if (!Object.keys(this.spendings).includes(this.today.date)) {
-        this.spendings[this.today.date] = [];
+      if (!Object.keys(this.spendings).includes(this.getCurrentDateTime().date)) {
+        this.spendings[this.getCurrentDateTime().date] = [];
       }
     },
     addSpending(spending) {
-      const today = this.today;
+      const today = this.getCurrentDateTime();
       const uid = uuid();
 
       if (!this.spendings[today.date]) {
         this.spendings[today.date] = [];
       }
 
-      this.spendings[today.date].unshift({
+      this.spendings[today.date].push({
         uid: uid,
-        created: today.time,
+        createdAt: today.time,
         type: spending.type,
         text: spending.text,
         amount: spending.amount,
       });
     },
-    removeSpending(uid) {},
-    editSpending(uid) {},
+    deleteSpending() {
+      const removed = this.spendings[this.selectedDate].filter((spending) => {
+        return spending.uid != this.editingItem.uid;
+      });
+      this.spendings[this.selectedDate] = removed;
+      this.editingItem = undefined;
+    },
+    updateSpending() {
+      for (let i = 0; i < this.spendings[this.selectedDate].length; i++) {
+        if (this.spendings[this.selectedDate][i].uid == this.editingItem.uid) {
+          this.spendings[this.selectedDate][i] = this.editingItem;
+          break;
+        }
+      }
+      this.editingItem = undefined;
+    },
     getSpendingByDate(date) {
       return this.spendings[date] || [];
+    },
+    getCurrentDateTime() {
+      const date = new Date().toLocaleDateString("en-CA");
+      const time = new Date().toLocaleTimeString("en-CA", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      return { date, time };
+    },
+    getEditingItem() {
+      return this.editingItem;
     },
   },
   watch: {},

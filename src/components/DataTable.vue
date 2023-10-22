@@ -2,7 +2,6 @@
 import { useBudgetStore } from "../store";
 
 const store = useBudgetStore();
-const today = store.today;
 
 function getTypeText(id) {
   let item = store.spendTypes.find((item) => item.id == id);
@@ -20,34 +19,33 @@ function truncateString(str, maxLength) {
     return str.slice(0, maxLength) + "...";
   }
 }
+
+function setEditItem(item) {
+  store.editingItem = item;
+}
 </script>
 
 <template>
   <div
     class="m-1 h-[65vh] overflow-y-scroll rounded-xl border-2 border-cyan-500 scrollbar bg-white"
   >
-    <table class="border-collapse w-full text-center select-none">
-      <colgroup>
-        <col class="w-2" />
-        <col class="w-2" />
-        <col class="w-2" />
-        <col class="w-2" />
-      </colgroup>
-      <thead class="text-lg bg-cyan-500 text-white sticky">
+    <table class="w-full text-center select-none">
+      <thead class="text-lg bg-cyan-500 text-white sticky top-0 z-10">
         <tr>
-          <th>Time</th>
-          <th>Type</th>
-          <th>VNĐ</th>
-          <th>Note</th>
+          <th class="sticky top-0 z-10"><i class="fa-solid fa-clock"></i></th>
+          <th class="sticky top-0 z-10"><i class="fa-solid fa-layer-group"></i></th>
+          <th class="sticky top-0 z-10"><i class="fa-solid fa-coins"></i></th>
+          <th class="sticky top-0 z-10"><i class="fa-solid fa-note-sticky"></i></th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="item in store.spendings[store.selectedDate]"
+          v-for="item in store.getSpendingByDate(store.selectedDate)"
           :key="item.uid"
           class="hover:bg-slate-200"
+          @click="setEditItem(item)"
         >
-          <td>{{ item.created }}</td>
+          <td>{{ item.createdAt }}</td>
           <td>{{ getTypeText(item.type) }}</td>
           <td>
             {{ new Intl.NumberFormat("en-US").format(item.amount * 1000) }}
@@ -57,8 +55,8 @@ function truncateString(str, maxLength) {
       </tbody>
     </table>
   </div>
-  <div class="bg-cyan-500 text-white flex justify-around font-bold text-center m-1 rounded-xl">
-    <p>Total</p>
-    <p>{{ store.totalSpendingBySelectedDate }}</p>
+  <div class="py-2 bg-cyan-500 text-white flex justify-around font-bold text-center m-1 rounded-xl">
+    <p>Total Spent</p>
+    <p>{{ store.totalSpendingBySelectedDate }} <i class="fa-solid fa-coins"></i></p>
   </div>
 </template>
